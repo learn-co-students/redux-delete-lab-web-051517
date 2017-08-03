@@ -9,16 +9,16 @@ class BandInput extends Component {
     };
   }
 
-  handleOnChange(event) {
+  handleOnChange = (event) => {
     this.setState({
       text: event.target.value,
     });
   }
 
-  handleOnSubmit(event) {
+  handleOnSubmit = (event) => {
     event.preventDefault();
     this.props.store.dispatch({
-      type: 'ADD_BAND', 
+      type: 'ADD_BAND',
       band: {
         text: this.state.text,
       },
@@ -29,10 +29,11 @@ class BandInput extends Component {
   }
 
   render() {
+    console.log("in band input")
     return (
       <div>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
-          <input type="text" onChange={(event) => this.handleOnChange(event)} />
+        <form onSubmit={this.handleOnSubmit}>
+          <input type="text" value={this.state.text} onChange={this.handleOnChange} />
           <input type="submit" />
         </form>
       </div>
